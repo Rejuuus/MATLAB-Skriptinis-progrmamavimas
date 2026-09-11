@@ -47,22 +47,23 @@ m = max(a, b)                % dviejų skaičių palyginimas — grąžina dides
 %% Papildoma uzduotis
 
 % 1. Kintamasis N - paskutinis studento ID skaitmuo
-N = 9; 
+N = 9;   
 
 % 2. Vektorius nuo N+1 iki N+4 zingsniu 0.5
 v = N+1 : 0.5 : N+4
 
-% 3. Matrica 3x3, pirmas elementas N, kiekvienas kitas vienetu didesnis
-A = reshape(N:N+8, 3, 3)'
+% 3. Matrica 3x3, kiekvienas elementas vienetu didesnis uz praeita
+A = [N,   N+1, N+2;
+     N+3, N+4, N+5;
+     N+6, N+7, N+8]
 
 % 4. Elementu atrinkimas pagal schemas
-A_a = A(3, 2)              % a) 3 eilute, 2 stulpelis
-A_b = A(2:3, 1:2)          % b) 2-3 eilutes, 1-2 stulpeliai
-A_c = A([1 3], [1 3])      % c) kampiniai elementai (1 ir 3 eil., 1 ir 3 stulp.)
+A_a = A(3,2)                  % a) viena langele - 3 eilute, 2 stulpelis
+A_b = A(2:3, 1:2)             % b) 2-3 eilutes, 1-2 stulpeliai
+A_c = [A(1,1), A(1,3);        % c) keturi kampai
+       A(3,1), A(3,3)]
 
-% 5. Vektoriaus prijungimas prie matricos A
-% v turi 7 elementus, o A - 3 stulpelius, todel vektorius modifikuojamas:
-% imami pirmi 3 elementai ir prijungiami kaip nauja eilute
-v_mod = v(1:3);
+% 5. Vektoriaus prijungimas prie matricos A (kaip papildoma eilute)
+v_mod = v(1:3);       % paliekam tik pirmus 3 elementus (kad tiktu prie 3 stulpeliu)
 A_new = [A; v_mod]
 
